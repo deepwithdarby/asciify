@@ -51,7 +51,7 @@ def generate_ascii_art(image):
 
 iface = gr.Interface(
     fn=generate_ascii_art,
-    inputs=gr.Image(),
+    inputs=gr.Image(type="pil"),
     outputs=[
         gr.File(label="Download .txt"),
         gr.File(label="Download .png")
