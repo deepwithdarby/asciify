@@ -48,44 +48,9 @@ def do(image, new_width=100):
 
     return '\n'.join(new_image)
 
-'''
-method runner():
-    - takes as parameter the image path and runs the above code
-    - handles exceptions as well
-    - provides alternative output options
-'''
-def runner(path):
-    image = None
-    try:
-        image = Image.open(path)
-    except Exception:
-        print("Unable to find image in",path)
-        #print(e)
-        return
+def runner(image):
+    """
+    Takes a PIL image and returns the ASCII art string.
+    """
     image = do(image)
-
-    # To print on console
-    print(image)
-
-    # Else, to write into a file
-    # Note: This text file will be created by default under
-    #       the same directory as this python file,
-    #       NOT in the directory from where the image is pulled.
-    f = open('img.txt','w')
-    f.write(image)
-    f.close()
-
-'''
-method main():
-    - reads input from console
-    - profit
-'''
-if __name__ == '__main__':
-    import sys
-    import urllib.request
-    if sys.argv[1].startswith('http://') or sys.argv[1].startswith('https://'):
-        urllib.request.urlretrieve(sys.argv[1], "asciify.jpg")
-        path = "asciify.jpg"
-    else:
-        path = sys.argv[1]
-    runner(path)
+    return image
